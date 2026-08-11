@@ -26,7 +26,6 @@ A small **event-driven microservices system** designed to demonstrate distribute
                                 |
                     +-----------+-----------+
                     |                       |
-                    |                       |
                     v                       v
              +-------------+       +------------------+
              |    Neon     |       |  NATS JetStream  |
@@ -50,7 +49,7 @@ A small **event-driven microservices system** designed to demonstrate distribute
 
 The **User Service and Notification Service do not communicate through REST APIs or WebSockets**.
 
-They communicate asynchronously through:
+They communicate asynchronously through NATS JetStream:
 
 ```text
 User Service
@@ -190,13 +189,13 @@ Neon PostgreSQL       NATS JetStream
                          |
                          | user.created
                          v
-                Notification Service
+                 Notification Service
                          |
                          v
-                   SMTP Server
+                    SMTP Server
                          |
                          v
-                    User Email
+                     User Email
 ```
 
 The important point is that the User Service **does not wait for the email to be sent**.
@@ -259,11 +258,10 @@ Send email
        |
        +------ SUCCESS ------> ACK
        |
-       |
        +------ FAILURE ------> No ACK
                                 |
                                 v
-                         Message redelivered
+                          Message redelivered
 ```
 
 The consumer uses an acknowledgement timeout and maximum delivery limit.
@@ -691,7 +689,7 @@ User Service
           Notification Service
                   |
                   v
-              Email
+                Email
 ```
 
 ---
@@ -792,39 +790,15 @@ The NATS executable is also not included in the repository.
 
 ---
 
-# 24. Demo
-
-The demonstration video shows:
-
-1. Starting NATS with JetStream.
-2. Starting the User Service.
-3. Starting the Notification Service.
-4. Starting the API Gateway.
-5. Registering a new user.
-6. User persistence in Neon PostgreSQL.
-7. `user.created` event being published.
-8. Notification Service consuming the event.
-9. Welcome email delivery.
-10. JetStream message acknowledgement.
-11. Failure and redelivery behavior.
-
-**Demo Video:** `<ADD_DEMO_VIDEO_URL>`
-
----
-
-# 25. Submission
+# 24. Submission
 
 **GitHub Repository:**
 
-`[Visit GitHub](https://github.com/sudharsan-051006/Trams)`  
-
-**Demo Video:**
-
-`<ADD_DEMO_VIDEO_URL>`
+[Visit GitHub](https://github.com/sudharsan-051006/Trams)
 
 ---
 
-# 26. Key Design Decisions
+# 25. Key Design Decisions
 
 ### Why NATS?
 
@@ -846,7 +820,7 @@ The gateway provides a single entry point for clients and centralizes authentica
 
 ---
 
-# 27. Summary
+# 26. Summary
 
 This project demonstrates:
 
