@@ -816,7 +816,7 @@ The demonstration video shows:
 
 **GitHub Repository:**
 
-`<ADD_GITHUB_REPOSITORY_URL>`
+`[<ADD_GITHUB_REPOSITORY_URL>](https://github.com/sudharsan-051006/Trams)`
 
 **Demo Video:**
 
